@@ -108,18 +108,18 @@ public class OggPacketReader {
 		}
 		
 		searched -= 3; // OggS
-		if(searched > 0) {
-			System.err.println("Warning - had to skip " + searched + " bytes of junk data before finding the next packet header");
-		}
+                // if(searched > 0) {
+                //      System.err.println("Warning - had to skip " + searched + " bytes of junk data before finding the next packet header");
+                // }
 		
 		// Create the page, and prime the iterator on it
 		OggPage page = new OggPage(inp);
-		if(!page.isChecksumValid()) {
-			System.err.println("Warning - invalid checksum on page " +
-					page.getSequenceNumber() + " of stream " +
-					Integer.toHexString(page.getSid()) + " (" +
-					page.getSid() + ")");
-		}
+                // if(!page.isChecksumValid()) {
+                //         System.err.println("Warning - invalid checksum on page " +
+                //                      page.getSequenceNumber() + " of stream " +
+                //                      Integer.toHexString(page.getSid()) + " (" +
+                //                      page.getSid() + ")");
+                // }
 		it = page.getPacketIterator(leftOver);
 		return getNextPacket();
 	}
